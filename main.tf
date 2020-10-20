@@ -38,6 +38,10 @@ resource "kubernetes_config_map" "vault_operator_transit_key" {
 resource "vault_auth_backend" "cluster" {
   path = "kw/${var.gitlab_project_path}/${var.cluster.name}"
   type = "kubernetes"
+  tune {
+    default_lease_ttl = "1h"
+    max_lease_ttl     = "720h"
+  }
 }
 
 resource "vault_kubernetes_auth_backend_config" "cluster" {
