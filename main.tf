@@ -50,8 +50,9 @@ resource "vault_kubernetes_auth_backend_config" "cluster" {
   kubernetes_ca_cert = base64decode(var.cluster.master_auth.0.cluster_ca_certificate)
   token_reviewer_jwt = data.kubernetes_secret.token_review.data["token"]
   issuer             = "kubernetes/serviceaccount"
-  
-  disable_iss_validation = var.disable_iss_validation
+
+  // dirty workaround for "claim iss is invalid" that is plaguing our clusters
+  disable_iss_validation = true
 }
 
 data "kubernetes_secret" "token_review" {
