@@ -9,3 +9,9 @@ variable "gitlab_project_path" {
 variable "cluster" {
   description = "A cluster in which operator is running"
 }
+
+variable "disable_iss_validation" {
+  type        = bool
+  default     = false
+  description = "diable ISS validation (bandaid workaround for 'claim iss is invalid')"
+}
