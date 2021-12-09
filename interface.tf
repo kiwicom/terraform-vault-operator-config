@@ -13,5 +13,5 @@ variable "cluster" {
 variable "disable_iss_validation" {
   type        = bool
   default     = false
-  description = "diable ISS validation (bandaid workaround for 'claim iss is invalid')"
+  description = "disable ISS validation (bandaid workaround for 'claim iss is invalid')"
 }
